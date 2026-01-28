@@ -1,0 +1,241 @@
+{
+  "$schema": "http://example.com/example.json",
+  "basics": {
+    "name": "Jethro Pesquera",
+    "label": "Cybersecurity Professional & Founder",
+    "image": "",
+    "email": "jethrop192168@gmail.com",
+    "phone": "385-375-4947",
+    "url": "https://jethrop.github.io",
+    "summary": "Cybersecurity professional focused on hands-on experience, red teaming and incident response with a hacking mindset.",
+    "location": {
+      "city": "Provo",
+      "region": "Utah",
+      "countryCode": "US"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "jethrop",
+        "url": "https://jethrop.github.io"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "jethro-pesquera",
+        "url": "https://www.linkedin.com/in/jethro-pesquera/"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Self-employed",
+      "location": "Remote",
+      "description": "Email Operations & Automation",
+      "position": "Founder & Principal Consultant",
+      "startDate": "2025-11",
+      "endDate": "",
+      "summary": "Designed and implemented an AI-assisted email triage system achieving functional inbox zero.",
+      "highlights": [
+        "Designed and implemented a full email triage and routing system for key inboxes",
+        "Reached functional inbox zero with high-signal messages surfaced and junk filtered",
+        "Set automation boundaries to preserve edge-case visibility",
+        "Delivered weekly reports on inbox activity and automation status"
+      ]
+    },
+    {
+      "name": "Self-employed",
+      "location": "Philippines",
+      "description": "SaaS Venture Exploration",
+      "position": "Independent Founder",
+      "startDate": "2024-07",
+      "endDate": "2025-10",
+      "summary": "Conducted founder-led discovery for SaaS ideas and launched an MVP.",
+      "highlights": [
+        "Conducted founder-led discovery across multiple SaaS concepts",
+        "Mapped ecosystem segments and refined positioning based on adoption barriers",
+        "Built and launched an MVP, receiving positive feedback",
+        "Leveraged AI-assisted workflows to accelerate product iteration"
+      ]
+    },
+    {
+      "name": "Arctic Wolf",
+      "location": "Pleasant Grove, UT",
+      "description": "Managed Security Operations",
+      "position": "Triage Security Engineer 2",
+      "startDate": "2023-07",
+      "endDate": "2024-06",
+      "summary": "Triaged security events and led investigations in a 24×7 environment.",
+      "highlights": [
+        "Triaged security events across network, endpoint and log data",
+        "Led end-to-end investigations of complex security incidents",
+        "Exceeded performance targets for incident detection and response"
+      ]
+    },
+    {
+      "name": "The Church of Jesus Christ of Latter-day Saints",
+      "location": "Remote",
+      "description": "Information Security",
+      "position": "Information Security Analyst 1",
+      "startDate": "2022-07",
+      "endDate": "2023-06",
+      "summary": "Performed playbook-driven incident response and developed automation scripts.",
+      "highlights": [
+        "Performed incident response using EDR, SIEM and OSINT tools",
+        "Developed Python scripts to automate SOC processes",
+        "Created triage techniques for high-demand periods"
+      ]
+    },
+    {
+      "name": "Various Organisations",
+      "location": "Utah / Philippines",
+      "description": "IT Support & Project Roles",
+      "position": "IT Service & Support Roles",
+      "startDate": "2019",
+      "endDate": "2022",
+      "summary": "Provided IT support, managed knowledge bases and led small teams.",
+      "highlights": [
+        "Managed service desk knowledge bases and provided Tier 1 support",
+        "Led small teams and delivered VFX asset capture projects",
+        "Developed and presented company-wide training on multi-factor authentication"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Ensign College",
+      "url": "",
+      "area": "Cyber/Electronic Operations and Warfare",
+      "studyType": "Applied Associate of Science",
+      "startDate": "2019-01",
+      "endDate": "2023",
+      "score": "3.22",
+      "courses": []
+    },
+    {
+      "institution": "Mountainland Applied Technology College",
+      "url": "",
+      "area": "Information Technology",
+      "studyType": "Certificate",
+      "startDate": "2017",
+      "endDate": "2017",
+      "score": "",
+      "courses": []
+    }
+  ],
+  "skills": [
+    {
+      "name": "Security Operations",
+      "level": "Advanced",
+      "keywords": [
+        "PICERL",
+        "EDR",
+        "SIEM",
+        "CrowdStrike",
+        "Sophos",
+        "Splunk",
+        "O365",
+        "OSINT"
+      ]
+    },
+    {
+      "name": "IT Support & Engineering",
+      "level": "Advanced",
+      "keywords": [
+        "Windows",
+        "macOS",
+        "Linux",
+        "Office 365",
+        "VPN",
+        "SSH",
+        "MFA",
+        "Jira",
+        "Scrum"
+      ]
+    },
+    {
+      "name": "Offensive Security",
+      "level": "Intermediate",
+      "keywords": [
+        "Kali Linux",
+        "Metasploit",
+        "Penetration Testing",
+        "Red Teaming"
+      ]
+    },
+    {
+      "name": "Continuous Learning",
+      "level": "Enthusiast",
+      "keywords": [
+        "BSides",
+        "Darknet Diaries",
+        "Hack The Box",
+        "Try Hack Me",
+        "Codeacademy"
+      ]
+    }
+  ],
+  "certificates": [
+    {
+      "name": "CompTIA A+",
+      "date": "",
+      "url": "",
+      "issuer": "CompTIA"
+    },
+    {
+      "name": "MOS Excel",
+      "date": "",
+      "url": "",
+      "issuer": "Microsoft"
+    },
+    {
+      "name": "TestOut Ethical Hacker Pro",
+      "date": "",
+      "url": "",
+      "issuer": "TestOut"
+    },
+    {
+      "name": "TestOut Linux Pro",
+      "date": "",
+      "url": "",
+      "issuer": "TestOut"
+    },
+    {
+      "name": "TestOut Network Pro",
+      "date": "",
+      "url": "",
+      "issuer": "TestOut"
+    },
+    {
+      "name": "TestOut Security Pro",
+      "date": "",
+      "url": "",
+      "issuer": "TestOut"
+    },
+    {
+      "name": "TestOut Windows Client Pro",
+      "date": "",
+      "url": "",
+      "issuer": "TestOut"
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Cyberforce",
+      "position": "Red Team Volunteer",
+      "url": "",
+      "startDate": "2022",
+      "endDate": "2022",
+      "summary": "Volunteered on a red team for Cyberforce competition.",
+      "highlights": []
+    },
+    {
+      "organization": "Collegiate Cyber Defense Competition",
+      "position": "Inject Management & Firewall Admin",
+      "url": "",
+      "startDate": "2019",
+      "endDate": "2022",
+      "summary": "Participated in competitions performing inject management and firewall administration.",
+      "highlights": []
+    }
+  ]
+}
