@@ -57,6 +57,9 @@ Not applicable.
 - Timeline shows an error about `resume.json`: Serve the folder with a local server instead of opening `index.html` via `file://`.
 - Animations not playing: Verify the AOS CDN is reachable and not blocked by the browser.
 
+## Security Note
+Yes, I know this is not a super well secured site.  Basically just a bunch of open files.  But all of this is public data that's also on my linkedIn.  There's no backend, it's all just static frontend files.
+
 ## License
 
-Not specified in repo.
+All rights reserved.
