@@ -119,6 +119,7 @@ a:hover {
   flex-direction: column;
   align-items: center;
   gap: 0.35rem;
+  text-align: center;
   color: var(--accent);
   transition: all 0.3s ease;
 }
@@ -146,6 +147,7 @@ a:hover {
 }
 
 .social-links .social-label {
+  display: block;
   font-size: 0.65rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -156,6 +158,7 @@ a:hover {
 
 /* SVG icon sizing within social links */
 .social-links svg.icon {
+  display: block;
   width: 1.2rem;
   height: 1.2rem;
 }
