@@ -1,9 +1,11 @@
-// Initialise scroll animations
-AOS.init({
-  duration: 800,
-  once: true,
-  easing: 'ease-in-out',
-});
+function initAos() {
+  if (!window.AOS || typeof window.AOS.init !== 'function') return;
+  window.AOS.init({
+    duration: 800,
+    once: true,
+    easing: 'ease-in-out',
+  });
+}
 
 // Typing effect for the hero subheading
 const typingElement = document.getElementById('typing');
@@ -41,6 +43,8 @@ function typeLoop() {
 
 // Start typing effect after DOM has loaded
 document.addEventListener('DOMContentLoaded', () => {
+  initAos();
+
   if (typingElement) {
     typeLoop();
   }
@@ -52,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Format ISO8601 partial dates (YYYY or YYYY-MM) into human friendly strings
 function formatDate(dateStr) {
   if (!dateStr) return 'Present';
-  const parts = dateStr.split('-');
+  const parts = String(dateStr).split('-');
   const year = parts[0];
   const month = parts[1];
   if (month) {
@@ -78,51 +82,87 @@ function formatDate(dateStr) {
   return year;
 }
 
+function buildDateRange(startDate, endDate) {
+  const nbsp = '\u00A0';
+  const enDash = '\u2013';
+  return `${formatDate(startDate)}${nbsp}${enDash}${nbsp}${formatDate(endDate)}`;
+}
+
+function buildTimelineTitle(job) {
+  // Match the formatting in index_old.html for Self-employed roles.
+  if (job?.name === 'Self-employed' && job.description) {
+    return `${job.position}, ${job.description}`;
+  }
+  return job?.position || '';
+}
+
+function buildTimelineLocation(job) {
+  // Match the formatting in index_old.html:
+  // - Self-employed roles show only the location.
+  // - Other roles show "Company, Location".
+  if (job?.name === 'Self-employed') return job?.location || '';
+  const parts = [];
+  if (job?.name) parts.push(job.name);
+  if (job?.location) parts.push(job.location);
+  return parts.join(', ');
+}
+
+function showTimelineLoadError(container) {
+  container.innerHTML =
+    '<div class="timeline-item"><div class="timeline-content"><p class="location">Unable to load <code>resume.json</code>. If you are opening <code>index.html</code> directly (file://), start a local server so the browser can fetch the JSON.</p></div></div>';
+}
+
 // Load resume.json and build the experience timeline
 async function loadTimeline() {
+  const container = document.getElementById('timeline');
+  if (!container) return;
+
+  let resume;
   try {
     const response = await fetch('resume.json');
     if (!response.ok) throw new Error('HTTP error ' + response.status);
-    const resume = await response.json();
-    const container = document.getElementById('timeline');
-    if (!container || !resume.work) return;
-    // Clear any existing items
-    container.innerHTML = '';
-    resume.work.forEach((job) => {
-      const item = document.createElement('div');
-      item.classList.add('timeline-item');
-      // Date range
-      const dateSpan = document.createElement('span');
-      dateSpan.classList.add('timeline-date');
-      dateSpan.textContent = `${formatDate(job.startDate)} – ${formatDate(job.endDate)}`;
-      item.appendChild(dateSpan);
-      // Content container
-      const content = document.createElement('div');
-      content.classList.add('timeline-content');
-      const title = document.createElement('h4');
-      title.textContent = job.position;
-      content.appendChild(title);
-      const location = document.createElement('p');
-      location.classList.add('location');
-      let nameLocation = job.name;
-      if (job.location) {
-        nameLocation += `, ${job.location}`;
-      }
-      location.textContent = nameLocation;
-      content.appendChild(location);
-      if (job.highlights && job.highlights.length > 0) {
-        const list = document.createElement('ul');
-        job.highlights.forEach((h) => {
-          const li = document.createElement('li');
-          li.textContent = h;
-          list.appendChild(li);
-        });
-        content.appendChild(list);
-      }
-      item.appendChild(content);
-      container.appendChild(item);
-    });
+    resume = await response.json();
   } catch (err) {
-    console.error('Failed to load timeline data', err);
+    console.error('Failed to fetch resume.json', err);
+    showTimelineLoadError(container);
+    return;
   }
+
+  if (!resume?.work || !Array.isArray(resume.work)) return;
+
+  container.innerHTML = '';
+  resume.work.forEach((job) => {
+    const item = document.createElement('div');
+    item.classList.add('timeline-item');
+
+    const dateSpan = document.createElement('span');
+    dateSpan.classList.add('timeline-date');
+    dateSpan.textContent = buildDateRange(job.startDate, job.endDate);
+    item.appendChild(dateSpan);
+
+    const content = document.createElement('div');
+    content.classList.add('timeline-content');
+
+    const title = document.createElement('h4');
+    title.textContent = buildTimelineTitle(job);
+    content.appendChild(title);
+
+    const location = document.createElement('p');
+    location.classList.add('location');
+    location.textContent = buildTimelineLocation(job);
+    content.appendChild(location);
+
+    if (job.highlights && Array.isArray(job.highlights) && job.highlights.length > 0) {
+      const list = document.createElement('ul');
+      job.highlights.forEach((h) => {
+        const li = document.createElement('li');
+        li.textContent = h;
+        list.appendChild(li);
+      });
+      content.appendChild(list);
+    }
+
+    item.appendChild(content);
+    container.appendChild(item);
+  });
 }
