@@ -32,6 +32,7 @@ Static, single-page CV website for Jethro Pesquera. It renders a branded hero, s
 
 - `resume.json`: Update work history, skills, education, and profile data.
 - `wrangler.jsonc`: Cloudflare Wrangler assets configuration (if deploying via Wrangler).
+- CV download CTA: The PDF link in `index.html` is commented out until a cleaner CV is ready; re-enable it when you want the download back.
 
 ## Usage
 
