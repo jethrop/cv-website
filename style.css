@@ -115,6 +115,25 @@ a:hover {
 }
 
 .social-links a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--accent);
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover .social-icon {
+  background: var(--accent);
+  color: var(--bg-dark);
+  transform: translateY(-3px);
+}
+
+.social-links a:hover .social-label {
+  opacity: 1;
+}
+
+.social-links .social-icon {
   font-size: 1.5rem;
   width: 2.5rem;
   height: 2.5rem;
@@ -123,14 +142,16 @@ a:hover {
   justify-content: center;
   border: 2px solid var(--accent);
   border-radius: 50%;
-  color: var(--accent);
   transition: all 0.3s ease;
 }
 
-.social-links a:hover {
-  background: var(--accent);
-  color: var(--bg-dark);
-  transform: translateY(-3px);
+.social-links .social-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
 }
 
 /* SVG icon sizing within social links */
