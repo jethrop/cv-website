@@ -7,6 +7,52 @@ function initAos() {
   });
 }
 
+/**
+ * Enable one-click copy for contact fields with a graceful fallback.
+ * Uses the Clipboard API when available, then falls back to selection copy.
+ */
+function initCopyButtons() {
+  const buttons = document.querySelectorAll('[data-copy-target]');
+  if (!buttons.length) return;
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', async () => {
+      const targetId = button.getAttribute('data-copy-target');
+      const input = targetId ? document.getElementById(targetId) : null;
+      if (!input) return;
+
+      const valueToCopy = input.value;
+      let copied = false;
+
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        try {
+          await navigator.clipboard.writeText(valueToCopy);
+          copied = true;
+        } catch (error) {
+          copied = false;
+        }
+      }
+
+      if (!copied) {
+        input.focus();
+        input.select();
+        copied = document.execCommand('copy');
+        input.setSelectionRange(0, 0);
+      }
+
+      if (copied) {
+        const originalLabel = button.textContent;
+        button.textContent = 'Copied!';
+        button.classList.add('copied');
+        setTimeout(() => {
+          button.textContent = originalLabel;
+          button.classList.remove('copied');
+        }, 2000);
+      }
+    });
+  });
+}
+
 // Typing effect for the hero subheading
 const typingElement = document.getElementById('typing');
 const phrases = [
@@ -44,6 +90,7 @@ function typeLoop() {
 // Start typing effect after DOM has loaded
 document.addEventListener('DOMContentLoaded', () => {
   initAos();
+  initCopyButtons();
 
   if (typingElement) {
     typeLoop();
